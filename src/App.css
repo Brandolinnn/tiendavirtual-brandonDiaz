@@ -38,7 +38,7 @@
 }
 
 .App {
-  background-color: red;
+  background-color: cornflowerblue;
 }
 
 .divNavBar {
@@ -60,3 +60,12 @@
   font-size: 20px;
   font-weight: bold;
 }
+
+button {
+  background: cornflowerblue;
+  border-radius: 10px;
+  width: 100px;
+  margin: 10px;
+
+}
+
