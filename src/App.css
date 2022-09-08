@@ -69,3 +69,11 @@ button {
 
 }
 
+.divProductos {
+  border: white 3px solid;
+  border-radius: 10px;
+  margin: 30px;
+  display: inline-block;
+  background-color: cornflowerblue;
+}
+

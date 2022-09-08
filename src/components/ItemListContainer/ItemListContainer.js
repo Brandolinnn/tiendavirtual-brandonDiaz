@@ -1,15 +1,27 @@
-import ItemCount from "../ItemCount/ItemCount";
+import  {useState} from "react";
+import ItemList from "../ItemList/ItemList"
+import data from "../mockData";
 
 const ItemListContainer = () => {
-  const stock = 10;
-  const handleOnAdd = (cantidad) => {
-    alert(`Agregaste ${cantidad} productos al carrito`);
-  }; 
+  const [productList, setProductList] = useState ([]);
+
+  const getProducts = new Promise ((resolve , reject) => {
+    setTimeout (() => {
+      resolve(data)
+    } , 2000 );
+  })
+  .then ((response) => {
+    setProductList(response);
+  })
+  .catch(() => {
+    alert("Algo estuvo mal")
+  })
+
+  
   return (
-    <div>
-        <h1>Carrito de productos</h1>
-        <ItemCount  initial={1} stock={stock} onAdd={handleOnAdd}/>
-    </div>
+    <>
+    <ItemList lista= {productList}/>
+    </>
   )
 }
 
