@@ -1,5 +1,5 @@
 import { useState  } from "react" ;
-
+import ItemListContainer from "../ItemListContainer/ItemListContainer";
 
 
 function ItemCount(props) {
@@ -29,6 +29,10 @@ function ItemCount(props) {
         }
  
     }
+
+    const handleOnAdd = () => {
+        if (Carrito <= props.stock) props.onAdd(Carrito);
+      };
     
   return (
     <div>
@@ -37,6 +41,7 @@ function ItemCount(props) {
         <button  onClick = {resta} >-</button>
         <button onClick = {suma} >+</button>
         <h2> STOCK DISPONIBLE: {props.stock}</h2>
+        <button onClick={handleOnAdd}>Agregar al carrito</button>
         
     </div>
   )
