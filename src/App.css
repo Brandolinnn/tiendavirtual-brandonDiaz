@@ -77,3 +77,15 @@ button {
   background-color: cornflowerblue;
 }
 
+
+.productoAuto {
+  color: cornflowerblue;
+  margin: 50px;
+  border: #61dafb solid 4px;
+}
+
+h3 {
+  background-color: antiquewhite;
+  color: black;
+  padding: 10px;
+}
