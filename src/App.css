@@ -41,25 +41,6 @@
   background-color: cornflowerblue;
 }
 
-.divNavBar {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-}
-
-.logoLsa {
-  width: 60px;
-  margin-top: 20px;
-}
-
-.links {
-  margin-top: 10px;
-  display: flex;
-  flex-flow: row nowrap;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
-  font-weight: bold;
-}
 
 button {
   background: cornflowerblue;
@@ -88,4 +69,26 @@ h3 {
   background-color: antiquewhite;
   color: black;
   padding: 10px;
+}
+
+
+.divNavBar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.logoLsa {
+  width: 60px;
+  padding-top: 5px;
+}
+
+
+
+button {
+  background: cornflowerblue;
+  border-radius: 10px;
+  width: 80px;
+  margin-top: 30px;
+
 }

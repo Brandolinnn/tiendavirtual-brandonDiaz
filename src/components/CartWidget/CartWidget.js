@@ -1,4 +1,4 @@
-import foto from "../../img/carritotto.png"
+import foto from "../../img/logoo.png"
 
 
 const CartWidget = () => {

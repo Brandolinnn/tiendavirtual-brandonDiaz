@@ -1,33 +1,35 @@
-import { useEffect , useState } from "react"
-import data from "../mockData";
+import { useEffect, useState } from "react"
 import ItemDetail from "../ItemDetail/ItemDetail";
+import { useParams } from "react-router-dom";
+import data from "../mockData";
 
 const ItemDetailContainer = () => {
-    const [productos, setProductos] = useState();
-    const id = "1";
+  const { ids } = useParams();
+
+  const [productoss, setProductoss] = useState();
+
+
+
+  const getItem = async () => {
+    await fetch(`https://fakestoreapi.com/products/${ids}`)
+    .then ((response)  => response.json())
+    .then((pro) => {
+      setProductoss(pro);
+  });
+};
 
 
   useEffect(() => {
-    getItem
-      .then((response) => {
-        setProductos(response.find((x)=> x.id === id));
-      })
-      .catch(() => {
-        alert("Algo estuvo mal")
-      })
-  }, [])
-
-
-  const getItem = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(data)
-    }, 2000);
-  })
+    getItem();
+  }, []);
 
   return (
-    productos && 
-    <ItemDetail productos={productos} />
+        
+    productoss &&  <ItemDetail productos={productoss} />
+
+     
   )
 }
+
 
 export default ItemDetailContainer;

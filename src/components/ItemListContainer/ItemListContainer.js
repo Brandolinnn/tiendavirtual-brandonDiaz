@@ -1,33 +1,33 @@
 import { useState, useEffect } from "react";
 import ItemList from "../ItemList/ItemList"
-import data from "../mockData";
+import data from "../mockData"
+
+
 
 const ItemListContainer = () => {
   const [productList, setProductList] = useState([]);
 
-  useEffect(() => {
-    getProducts
-      .then((response) => {
-        setProductList(response);
-      })
-      .catch(() => {
-        alert("Algo estuvo mal")
-      })
-  }, [])
-
-
-  const getProducts = new Promise((resolve, reject) => {
+  
+  const getProducts = new Promise((resolve, reject)=> {
     setTimeout(() => {
-      resolve(data)
-    }, 2000);
+      resolve(data);
+      reject("hubo error")
+    }, 2000)
   })
+    
+    
+    useEffect(() => {
+      getProducts.then((response) => {
+        setProductList(response)
+      })
+    }, []);
 
   return (
-    <>
+    <div>
       <ItemList lista={productList} />
-    </>
+    </div>
   )
-}
+ };
 
 
 

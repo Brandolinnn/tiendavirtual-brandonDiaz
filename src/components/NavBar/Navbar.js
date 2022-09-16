@@ -1,27 +1,35 @@
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
   return (
     <div className="divNavBar">
         <div>
-        
-        <h1>LIGA LSA</h1>
-
+          <CartWidget />
         </div>
 
         <div className="links">
-            <ul>Sobre Nosotros</ul>
-            <ul>Ubicacion</ul>
-            <ul>Contacto</ul>
-            
- 
+          <ul>
+          
+            <li>
+            <Link to={`/category/`}>Electronica</Link>
+            </li>
+
+            <li>
+            <Link to={"/category/ropa"}>Ropa</Link>
+            </li>
+
+            <li>
+            <Link to={"/category/joyas"}>Joyas</Link>
+            </li>
+             
+
+          </ul>
         </div>
 
         <div>
-        
-        <CartWidget />
-
+          <button type="submit" >LOGIN </button>
         </div>
         
 
