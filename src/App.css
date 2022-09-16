@@ -54,16 +54,17 @@ button {
   border: white 3px solid;
   border-radius: 10px;
   margin: 30px;
-  display: inline-block;
-  background-color: cornflowerblue;
+  width: 400px;
+  text-align: center;  
+  background: lightblue;
 }
 
-
-.productoAuto {
-  color: cornflowerblue;
-  margin: 50px;
-  border: #61dafb solid 4px;
+.divCadaProducto {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
+
 
 h3 {
   background-color: antiquewhite;
@@ -75,15 +76,21 @@ h3 {
 .divNavBar {
   display: flex;
   flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
   justify-content: space-between;
+  background-color: lightblue;
 }
 
 .logoLsa {
-  width: 60px;
+  width: 90px;
   padding-top: 5px;
+  margin: 20px;
 }
 
-
+.productoDetallada {
+  text-align: center;
+}
 
 button {
   background: cornflowerblue;
@@ -91,4 +98,57 @@ button {
   width: 80px;
   margin-top: 30px;
 
+}
+
+.titulo {
+  font-size: 15px;
+  background-color: lightblue;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+.precio {
+  text-align: center;
+  color: black;
+  font-size: 20px;
+}
+
+
+
+.h1Producto {
+  text-align: center;
+  font-size: 50px;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.h2Precio {
+  font-size: 30px;
+}
+
+.divCarrito {
+  display: flex;
+  flex-flow: row wrap;
+
+}
+
+.pDes {
+  margin: 20px;
+}
+
+.divDetails {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  border: white 3px solid;
+  border-radius: 10px;
+  margin: 30px;
+  width: 600px;
+  text-align: center;  
+  justify-content: center;
+  background: #000;
+  
+}
+
+.links {
+  display: flex;
+  text-decoration: none;
+  list-style:none;
 }

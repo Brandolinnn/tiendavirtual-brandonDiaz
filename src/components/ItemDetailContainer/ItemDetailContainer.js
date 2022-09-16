@@ -8,9 +8,11 @@ const ItemDetailContainer = () => {
 
   const [productoss, setProductoss] = useState();
 
-  const getItem = async () => {
-     await fetch(`https://fakestoreapi.com/products${id}`)
-     .then((res)=>res.json())
+  const getItem = () => {
+      fetch(`https://fakestoreapi.com/products/${id}`, {
+        method : "GET"
+      })
+     .then((res) => res.json() )
      .then(response=> {
       setProductoss(response)
       });

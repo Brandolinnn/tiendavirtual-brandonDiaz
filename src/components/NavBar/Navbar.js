@@ -1,37 +1,47 @@
 import CartWidget from "../CartWidget/CartWidget";
+
 import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
   return (
     <div className="divNavBar">
-        <div>
+      <div>
+        <Link to={"/"}>
           <CartWidget />
-        </div>
+        </Link>
+      </div>
 
-        <div className="links">
-          <ul>
-          
-            <li>
-            <Link to={`/category/jewelery/`}>Joyeria</Link>
-            </li>
+      <div >
+        <ul className="links">
 
-            <li>
-            <Link to={"/category/electronics"}>Electronica</Link>
-            </li>
+          <li>
+            <Link to={"/"}>
+              <button type="button" class="btn btn-dark ">HOME</button>
+            </Link>
 
-            <li>
-            <Link to={"/"}>Home</Link>
-            </li>
-             
+          </li>
 
-          </ul>
-        </div>
+          <li>
+            <Link to={"/category/electronics"}>
+              <button type="button" class="btn btn-dark .container-fluid">ELECTRO</button>
+            </Link>
+          </li>
 
-        <div>
-          <button type="submit" >LOGIN </button>
-        </div>
-        
+          <li>
+            <Link to={`/category/jewelery/`}>
+              <button type="button" class="btn btn-dark">JOYERIA</button>
+            </Link>
+          </li>
+
+
+        </ul>
+      </div>
+
+      <div>
+        <button type="submit" >LOGIN </button>
+      </div>
+
 
     </div>
   )
