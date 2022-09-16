@@ -1,31 +1,29 @@
 import { useEffect, useState } from "react"
 import ItemDetail from "../ItemDetail/ItemDetail";
-import { useParams } from "react-router-dom";
-import data from "../mockData";
+import {useParams } from "react-router-dom";
+
 
 const ItemDetailContainer = () => {
-  const { ids } = useParams();
+  const { id } = useParams();
 
   const [productoss, setProductoss] = useState();
 
-
-
   const getItem = async () => {
-    await fetch(`https://fakestoreapi.com/products/${ids}`)
-    .then ((response)  => response.json())
-    .then((pro) => {
-      setProductoss(pro);
-  });
+     await fetch(`https://fakestoreapi.com/products${id}`)
+     .then((res)=>res.json())
+     .then(response=> {
+      setProductoss(response)
+      });
+  
 };
-
 
   useEffect(() => {
     getItem();
-  }, []);
+  }, [id]);
 
   return (
         
-    productoss &&  <ItemDetail productos={productoss} />
+    productoss &&  <ItemDetail productoss={productoss} />
 
      
   )

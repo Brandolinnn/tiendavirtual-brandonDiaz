@@ -1,9 +1,9 @@
-const ItemDetail = ({productos}) => {
+const ItemDetail = ({productoss}) => {
     return (
       <div>
-        <img width="600px" src={productos.image} />
-        <h1>Nombre :{ productos.title }</h1>
-        <h2>Precio :{ productos.price }</h2>
+        <img width="600px" src={productoss.image} />
+        <h1>Nombre :{ productoss.title }</h1>
+        <h2>Precio :{ productoss.price }</h2>
       </div>
  
     )

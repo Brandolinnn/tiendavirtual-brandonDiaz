@@ -6,7 +6,7 @@ const ItemList = ({ lista }) => {
         <div>
             {
                 lista.map((product) => (
-                    <Link to={"/item/" + product.id } key={product.id}>
+                    <Link to={"/detail/" + product.id } key={product.id}>
                     <Item
                      title={product.title} 
                      price={product.price} 
