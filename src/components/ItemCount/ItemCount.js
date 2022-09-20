@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { Link } from "react-router-dom";
 
 
 
-function ItemCount({ stock, initial, onAdd }) {
-  const [Carrito, setCarrito] = useState(initial);
+function ItemCount({ setCarrito, Carrito, stock, initial, agg }) {
 
   const suma = () => {
     if (Carrito > stock - 1) {
@@ -20,17 +19,19 @@ function ItemCount({ stock, initial, onAdd }) {
     }
   };
   const handleOnAdd = () => {
-    if (Carrito <= stock) onAdd(Carrito);
+    if (Carrito <= stock) agg(Carrito);
   };
 
   return (
     <div>
       <h2>{Carrito}</h2>
 
-      <button onClick={resta}>-</button>
-      <button onClick={suma}>+</button>
+      <button onClick={resta} type="button" class="btn btn-primary "> - </button>
+      <button onClick={suma} type="button" class="btn btn-primary "> + </button>
       <h2> STOCK DISPONIBLE: {stock}</h2>
-      <button onClick={handleOnAdd}>Agregar al carrito</button>
+      <button onClick={handleOnAdd} type="button" class="btn btn-dark ">Agregar al carrito</button>
+      <Link to={"/cart"} >
+        <button type="button" class="btn btn-dark .container-fluid">Finalizar la compra</button></Link>
     </div>
   );
 }

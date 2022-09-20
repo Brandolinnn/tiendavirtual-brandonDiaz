@@ -1,7 +1,10 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { useState } from "react";
 
 
 const ItemDetail = ({ productoss }) => {
+  const initial = 1;
+  const [Carrito, setCarrito] = useState(initial);
   const stock = 10;
   const handleOnAdd = (cantidad) => {
     alert(`Agregaste ${cantidad} productos al carrito`);
@@ -17,7 +20,7 @@ const ItemDetail = ({ productoss }) => {
 
       <div>
         <h1>Carrito de productos</h1>
-        <ItemCount initial={1} stock={stock} onAdd={handleOnAdd} />
+        <ItemCount setCarrito={setCarrito} Carrito= {Carrito}  stock={stock} agg={handleOnAdd} />
       </div>
 
 
