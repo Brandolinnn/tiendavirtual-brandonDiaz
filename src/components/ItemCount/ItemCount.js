@@ -26,12 +26,11 @@ function ItemCount({ setCarrito, Carrito, stock, initial, agg }) {
     <div>
       <h2>{Carrito}</h2>
 
-      <button onClick={resta} type="button" class="btn btn-primary "> - </button>
-      <button onClick={suma} type="button" class="btn btn-primary "> + </button>
+      <button onClick={resta} type="button" class="btn btn-dark "> - </button>
+      <button onClick={suma} type="button" class="btn btn-dark "> + </button>
       <h2> STOCK DISPONIBLE: {stock}</h2>
       <button onClick={handleOnAdd} type="button" class="btn btn-dark ">Agregar al carrito</button>
-      <Link to={"/cart"} >
-        <button type="button" class="btn btn-dark .container-fluid">Finalizar la compra</button></Link>
+      
     </div>
   );
 }
