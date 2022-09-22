@@ -1,35 +1,34 @@
-import { Link } from "react-router-dom";
 
 
+function ItemCount({ count , setCount,  stock, onAdd }) {
 
-function ItemCount({ setCarrito, Carrito, stock, initial, agg }) {
 
   const suma = () => {
-    if (Carrito > stock - 1) {
+    if (count > stock - 1) {
       alert("STOCK AGOTADO");
     } else {
-      setCarrito(Carrito + 1);
+      setCount(count + 1);
     }
   };
   const resta = () => {
-    if (Carrito < 1) {
+    if (count < 1) {
       alert("STOCK AGOTADO");
     } else {
-      setCarrito(Carrito - 1);
+      setCount(count  - 1);
     }
   };
-  const handleOnAdd = () => {
-    if (Carrito <= stock) agg(Carrito);
+  const OnAdd = () => {
+    if (count <= stock) onAdd(count);
   };
 
   return (
     <div>
-      <h2>{Carrito}</h2>
+      <h2>{count}</h2>
 
-      <button onClick={resta} type="button" class="btn btn-dark "> - </button>
-      <button onClick={suma} type="button" class="btn btn-dark "> + </button>
+      <button onClick={resta} type="button" className="btn btn-dark "> - </button>
+      <button onClick={suma} type="button" className="btn btn-dark "> + </button>
       <h2> STOCK DISPONIBLE: {stock}</h2>
-      <button onClick={handleOnAdd} type="button" class="btn btn-dark ">Agregar al carrito</button>
+      
       
     </div>
   );

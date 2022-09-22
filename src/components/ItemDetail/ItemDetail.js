@@ -1,20 +1,22 @@
 import ItemCount from "../ItemCount/ItemCount";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext"
+
+
 
 
 const ItemDetail = ({ productoss, id, title, price }) => {
-  const initial = 1;
+  const [Count, setCount] = useState(0)
 
-  const [IrAlCarrito, setIrAlCarrito] = useState(false)
+  const { addToCart } = useContext(CartContext)
 
 
-  function handleOnAdd(cantidad) {
-    setIrAlCarrito(true);
-    IrAlCarrito({ id, title, price });
+  function OnAdd(productoss) {
+    addToCart(productoss, Count);
   }
 
-  const [Carrito, setCarrito] = useState(initial);
+
   const stock = 10;
 
   return (
@@ -26,25 +28,22 @@ const ItemDetail = ({ productoss, id, title, price }) => {
       <p className="pDes">{productoss.description}</p>
 
 
+
       <hr />
 
 
       <div>
         <h1>Carrito de productos</h1>
-        {IrAlCarrito ? (
-          <Link to={"/cart"}>
-            <button type="button" class="btn btn-dark .container-fluid">CARRITO</button>
-          </Link>)
+        <button onClick={() => OnAdd(productoss)} type="button" className="btn btn-dark ">Agregar</button>
+        
 
-          : (
-
-            <ItemCount
-              setCarrito={setCarrito}
-              Carrito={Carrito}
-              stock={stock}
-              agg={handleOnAdd}
-            />
-          )}
+        <ItemCount
+          productoss={productoss}
+          count={Count}
+          setCount={setCount}
+          stock={stock}
+          onAdd={OnAdd}
+        />
 
       </div>
 
