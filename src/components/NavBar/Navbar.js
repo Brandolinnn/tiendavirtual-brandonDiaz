@@ -1,9 +1,14 @@
 import CartWidget from "../CartWidget/CartWidget";
 
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
+
+
 
 
 const NavBar = () => {
+  const { cartTotal } = useContext(CartContext)
   return (
     <div className="divNavBar">
       <div>
@@ -17,20 +22,20 @@ const NavBar = () => {
 
           <li>
             <Link to={"/"}>
-              <button type="button" class="btn btn-dark ">HOME</button>
+              <button type="button" className="btn btn-dark ">HOME</button>
             </Link>
 
           </li>
 
           <li>
             <Link to={"/category/electronics"}>
-              <button type="button" class="btn btn-dark .container-fluid">ELECTRO</button>
+              <button type="button" className="btn btn-dark .container-fluid">ELECTRO</button>
             </Link>
           </li>
 
           <li>
             <Link to={`/category/jewelery/`}>
-              <button type="button" class="btn btn-dark">JOYERIA</button>
+              <button type="button" className="btn btn-dark">JOYERIA</button>
             </Link>
           </li>
 
@@ -39,7 +44,13 @@ const NavBar = () => {
       </div>
 
       <div>
-        <button type="submit" >LOGIN </button>
+        <Link to={`/cart`}>
+          <button type="submit" className="btn btn-dark"> CARRITO {
+            <span className="btn btn-light">
+              {cartTotal() > 0 ? cartTotal() : ""}
+            </span>
+          } </button>
+        </Link>
       </div>
 
 

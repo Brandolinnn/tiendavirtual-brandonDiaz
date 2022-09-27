@@ -9,24 +9,48 @@ export const CartProvider = ({ children }) => {
         if (isInCart(item.id)) {
             alert("YA ESTA EN EL CARRITO")
         } else {
-            setCart([...Cart, { ...item, cantidad }]); 
+            setCart([...Cart, { ...item, cantidad }]);
         }
-        console.log("Cart" , [...Cart, { ...item, cantidad }]);
+        console.log("Cart", [...Cart, { ...item, cantidad }]);
     }
-    
+
     const isInCart = (id) => {
         return Cart.some((item) => item.id === id);
     }
+
+    const removeItem = (productId) => {
+        let nuevoArreglo = [];
+
+        Cart.forEach((product) => {
+            if (product.id === productId) {
+                console.log(product);
+
+            } else {
+                nuevoArreglo.push(product)
+            }
+            setCart(nuevoArreglo);
+
+
+        })
+
+    }
+
+    const cartTotal = () => {
+        return Cart.reduce((acc, item) => acc + item.cantidad, 0)
+
+    }
+
+
 
     const clear = () => {
         setCart([]);
     }
 
-        return (
-            <CartContext.Provider value={{ Cart, addToCart }}>
+    return (
+        <CartContext.Provider value={{ Cart, addToCart, removeItem, cartTotal }}>
 
-                {children}
+            {children}
 
-            </CartContext.Provider>
-        )
-    }
+        </CartContext.Provider>
+    )
+}
