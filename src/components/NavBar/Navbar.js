@@ -28,14 +28,14 @@ const NavBar = () => {
           </li>
 
           <li>
-            <Link to={"/category/electronics"}>
-              <button type="button" className="btn btn-dark .container-fluid">ELECTRO</button>
+            <Link to={"/category/pantalones"}>
+              <button type="button" className="btn btn-dark .container-fluid">JEANS</button>
             </Link>
           </li>
 
           <li>
-            <Link to={`/category/jewelery/`}>
-              <button type="button" className="btn btn-dark">JOYERIA</button>
+            <Link to={`/category/gorros/`}>
+              <button type="button" className="btn btn-dark">GORROS</button>
             </Link>
           </li>
 

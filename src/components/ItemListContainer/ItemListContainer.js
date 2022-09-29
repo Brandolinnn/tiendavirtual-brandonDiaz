@@ -1,41 +1,59 @@
 import { useState, useEffect } from "react";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList"
+import { getFirestore, getDocs, collection, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
+
+
+
+
   const [productList, setProductList] = useState([]);
 
-   const { categoryName } =useParams();
-  
-  const getProducts = async () => {
-    let url;
+  const { categoryName } = useParams();
+
+
+
+  const getProducts = () => {
+    const db = getFirestore();
+
+    const querySnapshot = collection(db, "items");
+
+
+
     if (categoryName) {
-      url = `https://fakestoreapi.com/products/category/${categoryName}`;  
+      const queryFilter = query(querySnapshot, where("categoryId", "==", categoryName));
+      getDocs(queryFilter)
+        .then(res => {
+          const data = res.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+
+          })
+          setProductList(data);
+        });
     } else {
-      url = `https://fakestoreapi.com/products` ;
+      getDocs(querySnapshot)
+        .then(res => {
+          const data = res.docs.map((doc) => {
+            return { id: doc.id, ...doc.data() };
+
+          })
+          setProductList(data);
+        });
 
     }
-    fetch(url, {
-      method: "GET" ,
-      headers : {
-        "Content-Type" : "application/json"
-      } 
-    })
-    .then((response)=>response.json())
-    .then(data => setProductList(data))
-};
-    
-    
-    useEffect(() => {
-      getProducts();
-    }, [categoryName]);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, [categoryName]);
 
   return (
     <div>
       <ItemList lista={productList} />
     </div>
   )
- };
+};
 
 
 
