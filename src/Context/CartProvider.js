@@ -6,8 +6,9 @@ export const CartProvider = ({ children }) => {
     const [Cart, setCart] = useState([]);
 
     const addToCart = (item, cantidad) => {
-        if (isInCart(item.id)) {
-            alert("YA ESTA EN EL CARRITO")
+        const inCart=isInCart(item.id)
+        if (inCart) {
+            alert("Producto agregado al carrito")
         } else {
             setCart([...Cart, { ...item, cantidad }]);
         }
@@ -15,7 +16,7 @@ export const CartProvider = ({ children }) => {
     }
 
     const isInCart = (id) => {
-        return Cart.some((item) => item.id === id);
+        return Cart.find((item) => item.id === id);
     }
 
     const removeItem = (productId) => {
