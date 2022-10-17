@@ -18,15 +18,13 @@ const ItemDetailContainer = () => {
     getDoc(queryDoc)
       .then(res => {
   
-        setProductoss(res.data());
+        setProductoss({ id: res.id, ...res.data() });
       })
       .catch(error => {
         console.log(error);
       });
 
   }
-
-
 
 
   useEffect(() => {

@@ -1,28 +1,36 @@
-import { useContext  } from "react"
+import { useContext, useState } from "react"
 import { CartContext } from "../../Context/CartContext"
 import { Link } from "react-router-dom"
 import { collection, addDoc, getFirestore } from "firebase/firestore"
 
 const Cart = () => {
-    
-    const { Cart, removeItem, totalCarrito } = useContext(CartContext)
+    const { Cart, removeItem } = useContext(CartContext)
+    const [order , setOrder] = useState({
+        buyer: {
+            name: "",
+            phone: 0,
+            email: ""
+
+        },
+        items: Cart,
+        total: Cart.reduce(
+            (previousValue, currentValue) =>
+                previousValue + currentValue.price * currentValue.cantidad,
+            0),
+
+        });
+        const handleInputChange = (e) =>{
+            setOrder({
+                ...order,
+                buyer: {
+                    ...order.buyer,
+                    [e.target.name] : e.target.value,
+                },
+            });
+        };
     const createOrder = () => {
         const db = getFirestore();
 
-        const order = {
-            buyer: {
-                name: "Brando",
-                phone: "341341",
-                email: "email@email.com"
-
-            },
-            items: Cart,
-            total: Cart.reduce(
-                (previousValue, currentValue) =>
-                    previousValue + currentValue.price * currentValue.cantidad,
-                0),
-
-        };
 
         const query = collection(db, "orders");
         addDoc(query, order)
@@ -33,6 +41,7 @@ const Cart = () => {
             .catch((err) => {
                 console.log(err);
             })
+
     }
     return (
 
@@ -59,7 +68,7 @@ const Cart = () => {
                                     <h4 className="precio"> Precio: {item.price}</h4>
                                     <h5>Cantidad : {item.cantidad}</h5>
                                     <button type="submit" className="btn btn-danger" onClick={() => (removeItem(item.id))}>Eliminar</button>
-                                    <h5>Precio : {totalCarrito}</h5>
+                                    <h5>Precio:</h5>
 
                                 </div>
 
@@ -68,6 +77,29 @@ const Cart = () => {
                     </>
 
                 )}
+
+            <div>
+                <div>
+                    <label>Nombre</label>
+                    <input name="name" type="text" value={order.buyer.name} onChange={handleInputChange}/>
+
+                </div>
+
+                <div>
+                    <label>Numero</label>
+                    <input name="phone" type="number" value={order.buyer.phone} onChange={handleInputChange}/>
+
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input name="email" type="email" value={order.buyer.email} onChange={handleInputChange}/>
+
+                </div>
+
+            </div>
+
+
 
 
             <div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -15,7 +16,7 @@ const firebaseConfig = {
   projectId: "coderhouse-ecommerce-3497b",
   storageBucket: "coderhouse-ecommerce-3497b.appspot.com",
   messagingSenderId: "847749827209",
-  appId: "1:847749827209:web:572b2c638eaeb6fcd51458"
+  appId: "1:847749827209:web:52c386b8045de15bd51458"
 };
 
 // Initialize Firebase

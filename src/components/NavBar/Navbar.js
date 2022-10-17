@@ -28,8 +28,8 @@ const NavBar = () => {
           </li>
 
           <li>
-            <Link to={"/category/pantalones"}>
-              <button type="button" className="btn btn-dark .container-fluid">JEANS</button>
+            <Link to={"/category/zapas"}>
+              <button type="button" className="btn btn-dark .container-fluid">ZAPAS</button>
             </Link>
           </li>
 
