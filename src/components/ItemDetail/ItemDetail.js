@@ -1,12 +1,11 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext"
 
 
 
 
-const ItemDetail = ({ productoss, id, title, price }) => {  
+const ItemDetail = ({ productoss }) => {
   const [Count, setCount] = useState(0)
 
   const { addToCart } = useContext(CartContext)
@@ -35,7 +34,6 @@ const ItemDetail = ({ productoss, id, title, price }) => {
       <div>
         <h1>Carrito de productos</h1>
         <button onClick={() => OnAdd(productoss)} type="button" className="btn btn-dark ">Agregar</button>
-        
 
         <ItemCount
           productoss={productoss}
