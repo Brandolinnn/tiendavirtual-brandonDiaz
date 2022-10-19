@@ -22,20 +22,20 @@ const NavBar = () => {
 
           <li>
             <Link to={"/"}>
-              <button type="button" className="btn btn-dark ">HOME</button>
+              <button type="button" className="btn btn-outline-dark">HOME</button>
             </Link>
 
           </li>
 
           <li>
             <Link to={"/category/zapas"}>
-              <button type="button" className="btn btn-dark .container-fluid">ZAPAS</button>
+              <button type="button" className="btn btn-outline-dark .container-fluid">ZAPAS</button>
             </Link>
           </li>
 
           <li>
             <Link to={`/category/gorros/`}>
-              <button type="button" className="btn btn-dark">GORROS</button>
+              <button type="button" className="btn btn-outline-dark">GORROS</button>
             </Link>
           </li>
 
@@ -45,7 +45,7 @@ const NavBar = () => {
 
       <div>
         <Link to={`/cart`}>
-          <button type="submit" className="btn btn-dark"> CARRITO {
+          <button type="submit" className="btn btn-outline-dark"> CARRITO {
             <span className="btn btn-light">
               {cartTotal() > 0 ? cartTotal() : ""}
             </span>

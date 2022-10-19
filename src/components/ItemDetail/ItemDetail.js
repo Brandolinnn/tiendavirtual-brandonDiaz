@@ -24,7 +24,7 @@ const ItemDetail = ({ productoss, id, title, price }) => {
     <div className="divProductos">
       <img width={"300px"} src={productoss.image} />
       <h1 className="titulo">{productoss.title}</h1>
-      <h2 className="precio">Precio : ${productoss.price}</h2>
+      <h2 className="precio"> ${productoss.price}</h2>
       <p className="pDes">{productoss.description}</p>
 
 

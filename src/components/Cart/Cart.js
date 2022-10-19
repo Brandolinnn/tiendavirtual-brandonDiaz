@@ -2,9 +2,12 @@ import { useContext, useState } from "react"
 import { CartContext } from "../../Context/CartContext"
 import { Link } from "react-router-dom"
 import { collection, addDoc, getFirestore } from "firebase/firestore"
+import swal from "sweetalert"
+
 
 const Cart = () => {
-    const { Cart, removeItem } = useContext(CartContext)
+    
+    const { Cart, removeItem , clear} = useContext(CartContext)
     const [order , setOrder] = useState({
         buyer: {
             name: "",
@@ -35,8 +38,15 @@ const Cart = () => {
         const query = collection(db, "orders");
         addDoc(query, order)
             .then(({ id }) => {
-                console.log(id);
-                alert("gracias por tu compra")
+                
+                    swal({
+                        title : "Gracias por su compra",
+                        text: `Su id de orden es: ${id}` ,
+                        icon: "success",
+                        timer:"3000"
+                    });
+                    clear();
+                
             })
             .catch((err) => {
                 console.log(err);
@@ -45,15 +55,15 @@ const Cart = () => {
     }
     return (
 
-        <div>
+        <div className="carrito">
 
-            <h1>CARRITO</h1>
+            <h1 className="formulario">CARRITO</h1>
             {Cart.length === 0 ?
                 (
                     <>
-                        <h2>NO HAY PRODUCTOS EN EL CARRITO</h2>
+                        <h2 className="formulario">NO HAY PRODUCTOS EN EL CARRITO</h2>
                         <Link to={`/`}>
-                            <button type="submit" className="btn btn-dark">VOLVER AL INICIO</button>
+                            <button type="submit" className="btn btn-dark ">VOLVER AL INICIO</button>
                         </Link>
                     </>
                 )
@@ -68,8 +78,7 @@ const Cart = () => {
                                     <h4 className="precio"> Precio: {item.price}</h4>
                                     <h5>Cantidad : {item.cantidad}</h5>
                                     <button type="submit" className="btn btn-danger" onClick={() => (removeItem(item.id))}>Eliminar</button>
-                                    <h5>Precio:</h5>
-
+                                    
                                 </div>
 
                             </div>
@@ -78,20 +87,20 @@ const Cart = () => {
 
                 )}
 
-            <div>
-                <div>
+            <div className="formulario">
+                <div className="form" >
                     <label>Nombre</label>
                     <input name="name" type="text" value={order.buyer.name} onChange={handleInputChange}/>
 
                 </div>
 
-                <div>
+                <div className="form">
                     <label>Numero</label>
                     <input name="phone" type="number" value={order.buyer.phone} onChange={handleInputChange}/>
 
                 </div>
 
-                <div>
+                <div className="form">
                     <label>Email</label>
                     <input name="email" type="email" value={order.buyer.email} onChange={handleInputChange}/>
 
@@ -102,8 +111,9 @@ const Cart = () => {
 
 
 
-            <div>
-                <button type="submit" className="btn btn-danger" onClick={createOrder}>ORDENAR</button>
+            <div className="formularioo">
+                <h5 className="precioTotal">Precio total: ${order.total}</h5>
+                <button type="submit" className="btn btn-outline-success " onClick={createOrder}>Comprar</button>
             </div>
 
 

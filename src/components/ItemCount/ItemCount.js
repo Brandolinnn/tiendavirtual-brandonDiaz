@@ -1,18 +1,26 @@
-
-
+import swal from "sweetalert"
 function ItemCount({ count , setCount,  stock, onAdd }) {
 
 
   const suma = () => {
     if (count > stock - 1) {
-      alert("STOCK AGOTADO");
+      swal({
+        title : "Limite de stock alcanzado",
+        text: `Su stock es: ${stock}` ,
+        icon: "info",
+        timer:"2000"
+    });
     } else {
       setCount(count + 1);
     }
   };
   const resta = () => {
     if (count < 1) {
-      alert("STOCK AGOTADO");
+      swal({
+        title : "No puede haber numeros negativos",
+        icon: "info",
+        timer:"2000"
+    });
     } else {
       setCount(count  - 1);
     }

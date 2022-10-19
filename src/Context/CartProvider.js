@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CartContext } from "./CartContext";
+import swal from "sweetalert"
 
 export const CartProvider = ({ children }) => {
 
@@ -8,9 +9,18 @@ export const CartProvider = ({ children }) => {
     const addToCart = (item, cantidad) => {
         const inCart=isInCart(item.id)
         if (inCart) {
-            alert("Producto agregado al carrito")
+            swal({
+                title : "El producto ya se encuenta en el carrito",
+                icon: "error",
+                timer:"3000"
+            });
         } else {
             setCart([...Cart, { ...item, cantidad }]);
+            swal({
+                title : "El producto ya se agrego al carrito correctamente",
+                icon: "success",
+                timer:"3000"
+            });
         }
         console.log("Cart", [...Cart, { ...item, cantidad }]);
     }
@@ -41,14 +51,13 @@ export const CartProvider = ({ children }) => {
 
     }
 
-
-
     const clear = () => {
         setCart([]);
     }
 
+
     return (
-        <CartContext.Provider value={{ Cart, addToCart, removeItem, cartTotal }}>
+        <CartContext.Provider value={{ Cart, addToCart, removeItem, cartTotal , clear }}>
 
             {children}
 
